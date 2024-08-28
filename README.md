@@ -18,7 +18,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract DeganToken is ERC20 {
     address public owner;
-    address public storeAddress;
 
     struct NFT {
         string name;
@@ -36,7 +35,6 @@ contract DeganToken is ERC20 {
     // Events
     event Minted(address indexed to, uint256 amount);
     event Burned(address indexed from, uint256 amount);
-    event StoreAddressSet(address indexed storeAddress);
     event NFTGenerated(string name, string url, uint256 price);
     event Redeemed(address indexed from, string name);
 
@@ -54,14 +52,9 @@ contract DeganToken is ERC20 {
         emit Minted(to, amount);
     }
 
-    function burn(uint256 amount) external onlyOwner {
+    function burn(uint256 amount) external  {
         _burn(msg.sender, amount);
         emit Burned(msg.sender, amount);
-    }
-
-    function setStoreAddress(address _storeAddress) external onlyOwner {
-        storeAddress = _storeAddress;
-        emit StoreAddressSet(_storeAddress);
     }
 
     function generateNFT(string memory name, string memory url, uint256 price) external onlyOwner {
@@ -71,7 +64,6 @@ contract DeganToken is ERC20 {
     }
 
     function redeem(string memory name) external {
-        require(storeAddress != address(0), "Store address not set");
         require(balanceOf(msg.sender) >= NFTs[name].price, "Insufficient payment");
 
         _burn(msg.sender, NFTs[name].price);
@@ -89,6 +81,7 @@ contract DeganToken is ERC20 {
         return userNFTs[msg.sender];
     }
 }
+
 
 ```
 
@@ -126,8 +119,8 @@ Start frontend from the terminalin frontend directory
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/dsprifizw/image/upload/v1722454124/degan-token-home1.png)
-![App Screenshot](https://res.cloudinary.com/dsprifizw/image/upload/v1722454124/degan-token-home2.png)
+![App Screenshot](https://res.cloudinary.com/dsprifizw/image/upload/v1724837282/Screenshot_2024-08-28_145527_ks0fot.png)
+![App Screenshot](https://res.cloudinary.com/dsprifizw/image/upload/v1724837282/Screenshot_2024-08-28_145546_ujdiva.png)
 
 ## Lessons Learned
 
@@ -141,4 +134,4 @@ Start frontend from the terminalin frontend directory
 
 ## Author
 
-- Ayush sah[@linkedin](https://www.linkedin.com/in/ayushsah404/)
+- Swarnali Das

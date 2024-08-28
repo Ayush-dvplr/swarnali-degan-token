@@ -39,7 +39,7 @@ contract DeganToken is ERC20 {
         emit Minted(to, amount);
     }
 
-    function burn(uint256 amount) external onlyOwner {
+    function burn(uint256 amount) external  {
         _burn(msg.sender, amount);
         emit Burned(msg.sender, amount);
     }

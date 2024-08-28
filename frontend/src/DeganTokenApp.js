@@ -20,7 +20,6 @@ function DeganTokenApp() {
     address: "",
     amount: "",
   });
-  const [storeAddress, setStoreAddress] = useState("");
 
   useEffect(() => {
     const init = async () => {
@@ -48,14 +47,6 @@ function DeganTokenApp() {
 
         const owner = await contractInstance.owner();
         setIsOwner(owner === address);
-
-        try {
-          const storeAddr = await contractInstance.storeAddress();
-          setStoreAddress(storeAddr);
-        } catch (error) {
-          console.error("Error fetching store address:", error);
-          setStoreAddress("");
-        }
 
         try {
           const allNfts = await contractInstance.getAllNFTs();
@@ -201,25 +192,6 @@ function DeganTokenApp() {
     handleTransaction(contract.redeem(nftName), "NFT purchased successfully!");
   };
 
-  const toggleStoreAddress = async () => {
-    try {
-      const newStoreAddress =
-        storeAddress === "0x0000000000000000000000000000000000000000"
-          ? userAddress
-          : "0x0000000000000000000000000000000000000000";
-      await handleTransaction(
-        contract.setStoreAddress(newStoreAddress),
-        newStoreAddress === "0x0000000000000000000000000000000000000000"
-          ? "Store closed!"
-          : "Store opened!"
-      );
-      setStoreAddress(newStoreAddress);
-    } catch (error) {
-      console.error("Error toggling store address:", error);
-      alert("Failed to toggle store address.");
-    }
-  };
-
   return (
     <>
       <div>
@@ -234,22 +206,6 @@ function DeganTokenApp() {
           <p>DGN Balance: {dgnBalance} DGN</p>
         </nav>
         <section>
-          {isOwner && (
-            <div>
-              <h3>Store Address</h3>
-              <button onClick={toggleStoreAddress}>
-                {storeAddress === "0x0000000000000000000000000000000000000000"
-                  ? "Set Store Address"
-                  : "Reset Store Address"}
-              </button>
-              <p>
-                Status:{" "}
-                {storeAddress === "0x0000000000000000000000000000000000000000"
-                  ? "Store closed"
-                  : "Store open"}
-              </p>
-            </div>
-          )}
           {isOwner && (
             <div>
               <h3>Mint DGN (Owner Only)</h3>
