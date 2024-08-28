@@ -1,0 +1,162 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.task-details {
+  flex-grow: 1;
+}
+
+.success-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 2rem;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input[type="text"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  display: block;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.link {
+  text-decoration: none;
+  color: #007bff;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Additional CSS for Edit Task Page */
+.edit-task-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.edit-task-container p {
+  width: 100%;
+  text-align: left;
+}
+
+.edit-task-container input[type="text"],
+.edit-task-container input[type="checkbox"] {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+}
+
+.edit-task-container button {
+  margin-top: 20px;
+}
+
+.mark-complete-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mark-complete-button:hover {
+  background-color: #218838;
+}
